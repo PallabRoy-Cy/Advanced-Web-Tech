@@ -1,0 +1,85 @@
+/* AllProducts.css */
+
+.product-body {
+  display: grid;
+  gap: 20px;
+}
+
+.mypdheader {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.product-card {
+  display: grid;
+  gap: 20px;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 1fr;
+  gap: 20px;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.product-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.mypddetails h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.cart-button {
+  display: flex;
+  align-items: center;
+}
+
+.actual-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+.mycartdetails {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.removebutton {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.grandtotalcart {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.checkoutbutton {
+  margin-top: 20px;
+}
+
+.checkoutbutton button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Add more styles as needed */

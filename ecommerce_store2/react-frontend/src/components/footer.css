@@ -1,0 +1,28 @@
+.sb-footer {
+    background-color: #f8f9fa; /* Set your desired background color */
+    padding: 20px;
+    color: #343a40; /* Set your desired text color */
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .contact-info {
+    flex: 1;
+  }
+  
+  .contact-form {
+    flex: 1;
+    text-align: center; /* Adjust as needed */
+  }
+  
+  .rights-reserved {
+    text-align: center; /* Adjust as needed */
+    margin-top: 20px; /* Add space between content and rights reserved text */
+  }
+  
+  /* Add any additional styles as needed */
+  
