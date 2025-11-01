@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 export default function Search({ onSearchResults, onDemoSearch, isUsingDemo }) {
   const [searchValue, setSearchValue] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
 
   const handleSearch = () => {
     if (isUsingDemo) {
@@ -21,15 +20,13 @@ export default function Search({ onSearchResults, onDemoSearch, isUsingDemo }) {
         return response.json();
       })
       .then((data) => {
-        setSearchResult(data);
         if (onSearchResults) {
           onSearchResults(data);
         }
       })
       .catch((error) => {
-        console.error("Error fetching search results:", error);
-        console.warn("API unavailable, using demo search.");
-        setSearchResult([]);
+  console.error("Error fetching search results:", error);
+  console.warn("API unavailable, using demo search.");
         if (onDemoSearch) {
           onDemoSearch(searchValue);
         }
