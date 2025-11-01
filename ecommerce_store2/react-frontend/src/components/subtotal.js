@@ -23,13 +23,11 @@ function Subtotal({ data, getTotal, id }) {
   }
 
   useEffect(() => {
-    setTotalAmount();
+    // compute and report total whenever dependencies change
+    if (typeof getTotal === "function") {
+      getTotal(count * price, id);
+    }
   }, [count, getTotal, id, price]);
-
-  function setTotalAmount() {
-    getTotal(count * price, id);
-
-  }
 
   return (
     <div className="mycartaction">

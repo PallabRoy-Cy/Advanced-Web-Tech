@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useCart } from "./cartcontext";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 export default function Search({ onSearchResults, onDemoSearch, isUsingDemo }) {
-  const [cart, setCart] = useCart();
   const [searchValue, setSearchValue] = useState("");
   const [searchResult, setSearchResult] = useState([]);
 
