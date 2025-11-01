@@ -81,10 +81,8 @@ function AddProduct() {
       }
     } catch (error) {
       console.error('Error adding product:', error);
-
-  // Example: Display a user-friendly error message
+      
       Swal.fire('Error', 'An error occurred while adding the product. Please try again.', 'error');
-      // Handle errors, display error messages, etc.
     }
   };
     

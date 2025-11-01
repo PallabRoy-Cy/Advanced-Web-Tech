@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/allproducts', [ProductController::class, 'allproducts']);
+Route::get('/featured', [ProductController::class, 'featured']);
 Route::delete('/delete/{id}', [ProductController::class, 'delete']);
 Route::get('/getproduct/{id}', [ProductController::class, 'getProduct']);
 Route::put('/updateproduct/{id}', [ProductController::class, 'update']);

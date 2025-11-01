@@ -22,10 +22,6 @@ class Product extends Model
         'description',
     ];
 
-    // many products -> one vendor
-    // public function user(){
-    //     return $this->belongsTo(User::class,'user_id');
-    // }
 
     public function user()
     {

@@ -8,10 +8,17 @@ export default function MyProducts() {
   const fetchProductData = () => {
     fetch("http://127.0.0.1:8000/api/allproducts")
       .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to load products");
+        }
         return response.json();
       })
       .then((data) => {
         setProductData(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+        setProductData([]);
       });
   };
 
@@ -20,12 +27,18 @@ export default function MyProducts() {
   }, []);
 
   async function deleteProduct(id) {
-    let result = await fetch("http://127.0.0.1:8000/api/delete/" + id, {
-      method: "DELETE",
-    });
-    result = await result.json();
-    // console.log(result.result);
-    fetchProductData();
+    try {
+      let result = await fetch("http://127.0.0.1:8000/api/delete/" + id, {
+        method: "DELETE",
+      });
+      if (!result.ok) {
+        throw new Error("Failed to delete product");
+      }
+      await result.json();
+      fetchProductData();
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    }
   }
 
   if (localStorage.getItem("user")) {

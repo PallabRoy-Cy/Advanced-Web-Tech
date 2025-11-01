@@ -99,6 +99,18 @@ class ProductController extends Controller
         return Product::all();
     }
 
+    /**
+     * Return latest featured products (defaults to 8 items)
+     */
+    public function featured(Request $request)
+    {
+        $limit = (int) ($request->query('limit', 8));
+        if ($limit <= 0 || $limit > 50) {
+            $limit = 8;
+        }
+        return Product::orderBy('created_at', 'desc')->limit($limit)->get();
+    }
+
     public function delete($id)
     {
         $result = Product::where('id', $id)->delete();

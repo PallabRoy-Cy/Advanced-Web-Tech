@@ -1,18 +1,18 @@
 import React from 'react';
-import { Route, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 
 const ProtectedRoute = ({ element: Element, ...rest }) => {
-    const isAuthenticated  = !!localStorage.getItem('user'); // Check if the user is logged in
-  
-    return (
-      <Route
-        {...rest}
-        element={isAuthenticated ? <Navigate to="/dashboard" /> : <Element />}
-      />
-     
-    );
-  };
+  // Consider the user authenticated if we have an auth token OR demo_mode flag is true
+  const hasToken = !!localStorage.getItem('auth_token');
+  const demoMode = localStorage.getItem('demo_mode') === 'true';
+
+  if (hasToken || demoMode) {
+    return <Element {...rest} />;
+  }
+
+  return <Navigate to="/login" replace />;
+};
 
 export default ProtectedRoute;
   

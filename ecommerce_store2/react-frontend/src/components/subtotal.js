@@ -1,30 +1,30 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-function subtotal({ data, getTotal, id }) {
+function Subtotal({ data, getTotal, id }) {
   let price = data;
 
   const [count, setCount] = useState(1);
 
   function handleIncrement() {
     setCount((prevCount) => {
-      return (prevCount += 1);
+      return prevCount + 1;
     });
   }
 
   function handleDecrement() {
     setCount((prevCount) => {
       if (prevCount > 1) {
-        return (prevCount -= 1);
+        return prevCount - 1;
       } else {
-        return (prevCount = 1);
+        return 1;
       }
     });
   }
 
   useEffect(() => {
     setTotalAmount();
-  }, [count]);
+  }, [count, getTotal, id, price]);
 
   function setTotalAmount() {
     getTotal(count * price, id);
@@ -34,13 +34,13 @@ function subtotal({ data, getTotal, id }) {
   return (
     <div className="mycartaction">
       <div className="fornumber">
-        <div class="number">
-          <span class="minus" onClick={handleDecrement}>
+        <div className="number">
+          <span className="minus" onClick={handleDecrement}>
             -
           </span>
 
-          <input type="text" value={count} />
-          <span class="plus" onClick={handleIncrement}>
+          <input type="text" value={count} readOnly />
+          <span className="plus" onClick={handleIncrement}>
             +
           </span>
         </div>
@@ -52,4 +52,4 @@ function subtotal({ data, getTotal, id }) {
   );
 }
 
-export default subtotal;
+export default Subtotal;

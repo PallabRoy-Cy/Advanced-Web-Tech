@@ -22,6 +22,9 @@ function Update() {
     const fetchProductData = async () => {
       try {
         const response = await fetch(`http://127.0.0.1:8000/api/getproduct/${id}`);
+        if (!response.ok) {
+          throw new Error("Failed to load product");
+        }
         const data = await response.json();
         setProductData(data);
       } catch (error) {
@@ -44,13 +47,20 @@ function Update() {
     formData.append("pdimg", productData.pdimg);
     formData.append("description", productData.description);
 
-    await fetch(`http://127.0.0.1:8000/api/updateproduct/${id}?_method=PUT`, {
-      method: "POST",
-      body: formData,
-    });
-
-    alert("Product Updated");
-    navigate("/myproducts");
+    try {
+      const res = await fetch(`http://127.0.0.1:8000/api/updateproduct/${id}?_method=PUT`, {
+        method: "POST",
+        body: formData,
+      });
+      if (!res.ok) {
+        throw new Error("Failed to update product");
+      }
+      alert("Product Updated");
+      navigate("/myproducts");
+    } catch (error) {
+      console.error('Error updating product:', error);
+      alert("Update failed. Please try again.");
+    }
   };
 
   return (

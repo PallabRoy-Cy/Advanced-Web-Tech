@@ -7,10 +7,15 @@ import "react-toastify/dist/ReactToastify.css";
 import "./AllProducts.css"; // Import your CSS file
 // import Swal from 'sweetalert2';
 import Search from "./search";
+import SearchResults from "./SearchResults";
+import { demoProducts, searchDemoProducts } from "../assets/assets/demo/demoProducts";
 
 function AllProducts() {
   const [cart, setCart] = useCart();
   const [productData, setProductData] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
+  const [isUsingDemo, setIsUsingDemo] = useState(false);
 
 
 
@@ -26,15 +31,38 @@ function AllProducts() {
   // };
   const fetchProductData = () => {
     fetch("http://127.0.0.1:8000/api/allproducts")
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to load products");
+        }
+        return response.json();
+      })
       .then((data) => {
         setProductData(data);
+        setIsUsingDemo(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+        console.warn("API unavailable, showing demo products.");
+        setProductData(demoProducts);
+        setIsUsingDemo(true);
       });
   };
 
   useEffect(() => {
     fetchProductData();
   }, []);
+
+  const handleSearchResults = (results) => {
+    setSearchResults(results);
+    setIsSearching(results.length > 0);
+  };
+
+  const handleDemoSearch = (searchTerm) => {
+    const results = searchDemoProducts(searchTerm);
+    setSearchResults(results);
+    setIsSearching(results.length > 0);
+  };
 
   return (
     <div className="all-products">
@@ -51,18 +79,34 @@ function AllProducts() {
         </div>
 
         <div className="search-bar">
-          <Search />
-
-         </div>
+          <Search 
+            onSearchResults={handleSearchResults} 
+            onDemoSearch={handleDemoSearch}
+            isUsingDemo={isUsingDemo}
+          />
+        </div>
 
       </div>
-      {productData.length > 0 && (
+      
+      {/* Demo Mode Notification */}
+      {isUsingDemo && (
+        <div className="demo-notification">
+          <i className="fa-solid fa-info-circle"></i>
+          <span>API unavailable, showing demo products.</span>
+        </div>
+      )}
+      
+      {/* Search Results */}
+      {isSearching && <SearchResults searchResult={searchResults} />}
+      
+      {/* Regular Products */}
+      {!isSearching && productData.length > 0 && (
         <div className="product-body">
           {productData.map((item) => (
             <div className="product-list" key={item.id}>
               <div className="product-image">
                 <img
-                  src={"http://127.0.0.1:8000/" + item.pdimg}
+                  src={isUsingDemo ? item.pdimg : "http://127.0.0.1:8000/" + item.pdimg}
                   className="product-image"
                   alt="Product"
                 />
@@ -116,3 +160,4 @@ function AllProducts() {
 }
 
 export default AllProducts;
+

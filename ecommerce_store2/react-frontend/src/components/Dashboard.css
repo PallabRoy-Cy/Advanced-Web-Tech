@@ -1,0 +1,85 @@
+/* Compact, balanced dashboard layout */
+.dashboard-bg {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #f3f5fa 0%, #e6edfa 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 4vw 0 4vw;
+  box-sizing: border-box;
+}
+.dashboard-title {
+  color: #0d6efd;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: center;
+  margin-bottom: 18px;
+}
+.dashboard-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.dashboard-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(13,110,253,0.07);
+  padding: 18px 14px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: box-shadow .18s, transform .18s;
+  border-top: 4px solid #0d6efd;
+  position: relative;
+  margin: 0;
+}
+.dashboard-card .icon {
+  font-size: 1.7rem;
+  margin-bottom: 8px;
+  color: #0d6efd;
+  background: linear-gradient(135deg,#edf3ff,#e1eafd);
+  border-radius: 10px;
+  padding: 6px 10px 6px 10px;
+  display: inline-block;
+}
+.dashboard-card[data-type="warning"] { border-top-color: #FFB300; }
+.dashboard-card[data-type="success"] { border-top-color: #22c1c3; }
+.dashboard-card[data-type="danger"] { border-top-color: #ff5e62; }
+.dashboard-card .card-label {
+  font-size: 1.08rem;
+  color: #161c2d;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.dashboard-card .card-footer {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashboard-card .view-link {
+  color: #0d6efd;
+  text-decoration: underline;
+  font-weight: 500;
+  font-size: 0.98rem;
+  transition: color .17s;
+}
+.dashboard-card .view-link:hover { color: #10346b; }
+.dashboard-card:hover {
+  box-shadow: 0 12px 36px rgba(13, 110, 253, 0.11);
+  transform: translateY(-3px) scale(1.015);
+  z-index: 2;
+}
+@media (max-width: 650px) {
+  .dashboard-title { font-size: 1.08em; }
+  .dashboard-card { padding: 12px 6px 10px 6px; }
+  .dashboard-grid { gap: 7px; }
+  .dashboard-bg { padding: 8px 2vw 0 2vw; }
+}
