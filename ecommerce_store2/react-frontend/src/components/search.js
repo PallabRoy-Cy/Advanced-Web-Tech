@@ -12,7 +12,9 @@ export default function Search({ onSearchResults, onDemoSearch, isUsingDemo }) {
       return;
     }
 
-    fetch(`http://127.0.0.1:8000/api/search/${searchValue}`)
+    const apiUrl = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
+    
+    fetch(`${apiUrl}/api/search/${searchValue}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch search results");
