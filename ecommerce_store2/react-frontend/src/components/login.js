@@ -116,8 +116,14 @@ export default function Login() {
               {loading ? 'Logging in...' : 'Login'}
             </button>
             <div className="auth-link-row">
-              <a href="#" className="auth-link">Forgot Password?</a>
-              <span className="auth-link">Don't have an account? <a href="/register" className="auth-link">Register</a></span>
+              <button
+                type="button"
+                className="auth-link auth-btn-link"
+                onClick={() => navigate('/forgot-password')}
+              >
+                Forgot Password?
+              </button>
+               <span className="auth-link">Don't have an account? <a href="/register" className="auth-link">Register</a></span>
             </div>
           </form>
         </div>
