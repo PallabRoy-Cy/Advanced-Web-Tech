@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Auth.css";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -44,72 +45,61 @@ export default function Contact() {
   };
 
   return (
-    <section className="mb-4">
-      <h2 className="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
-      <p className="text-center w-responsive mx-auto mb-5">
-        Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within a matter of hours to help you.
-      </p>
-      <div className="row">
-        <div className="col-md-9 mb-md-0 mb-5">
-          <form id="contact-form" name="contact-form" action="mail.php" method="POST" onSubmit={handleSubmit}>
-            <div className="row">
-              <div className="col-md-6">
-                <div className="md-form mb-0">
-                  <label htmlFor="name">Your name</label>
-                  <input type="text" id="name" name="name" className="form-control" onChange={handleInputChange} value={formData.name} />
-                  <span style={{ color: "red" }}>{formErrors.name}</span>
-                </div>
+    <div className="auth-bg">
+      <div className="auth-card" style={{ maxWidth: '800px' }}>
+        <h2 className="auth-title">Contact Us</h2>
+        <p style={{ textAlign: 'center', marginBottom: '1.5rem', color: '#6c757d' }}>
+          Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within a matter of hours to help you.
+        </p>
+        <div style={{ display: 'flex', gap: '2rem' }}>
+          <div style={{ flex: 2 }}>
+            <form id="contact-form" name="contact-form" onSubmit={handleSubmit} autoComplete="off">
+              <div className="auth-form-group">
+                <label htmlFor="name" className="auth-label">Your name</label>
+                <input type="text" id="name" name="name" className={`auth-input${formData.name ? (formErrors.name ? " input-error" : " input-valid") : ""}`} onChange={handleInputChange} value={formData.name} />
+                <div className="auth-error-msg">{formErrors.name}</div>
               </div>
-              <div className="col-md-6">
-                <div className="md-form mb-0">
-                  <label htmlFor="email">Your email</label>
-                  <input type="text" id="email" name="email" className="form-control" onChange={handleInputChange} value={formData.email} />
-                  <span style={{ color: "red" }}>{formErrors.email}</span>
-                </div>
+
+              <div className="auth-form-group">
+                <label htmlFor="email" className="auth-label">Your email</label>
+                <input type="text" id="email" name="email" className={`auth-input${formData.email ? (formErrors.email ? " input-error" : " input-valid") : ""}`} onChange={handleInputChange} value={formData.email} />
+                <div className="auth-error-msg">{formErrors.email}</div>
               </div>
-            </div>
-            <div className="row">
-              <div className="col-md-12">
-                <div className="md-form mb-0">
-                  <label htmlFor="subject">Subject</label>
-                  <input type="text" id="subject" name="subject" className="form-control" />
-                </div>
+
+              <div className="auth-form-group">
+                <label htmlFor="subject" className="auth-label">Subject</label>
+                <input type="text" id="subject" name="subject" className="auth-input" />
               </div>
-            </div>
-            <div className="row">
-              <div className="col-md-12">
-                <div className="md-form">
-                  <label htmlFor="message">Your message</label>
-                  <textarea type="text" id="message" name="message" className="form-control" onChange={handleInputChange} value={formData.message}></textarea>
-                  <span style={{ color: "red" }}>{formErrors.message}</span>
-                </div>
+
+              <div className="auth-form-group">
+                <label htmlFor="message" className="auth-label">Your message</label>
+                <textarea id="message" name="message" rows="4" className={`auth-input${formData.message ? (formErrors.message ? " input-error" : " input-valid") : ""}`} onChange={handleInputChange} value={formData.message}></textarea>
+                <div className="auth-error-msg">{formErrors.message}</div>
               </div>
-            </div>
-            <div className="text-center text-md-left">
-              <button type="submit" className="btn btn-primary">
+
+              <button type="submit" className="auth-btn">
                 Send
               </button>
-            </div>
-            <div className="status"></div>
-          </form>
-        </div>
-        <div className="col-md-3 text-center">
-          <ul className="list-unstyled mb-0">
-            <li>
-              <i className="fas fa-map-marker-alt fa-2x"></i>
-              <p>Dhaka,Bangladesh</p>
-            </li>
-            <li>
-              <i className="fas fa-phone mt-4 fa-2x"></i>
-              <p>+880162****43</p>
-            </li>
-            <li>
-              <i className="fas fa-envelope mt-4 fa-2x"></i>
-              <p>pallabr8@gmail.com</p>
-            </li>
-          </ul>
+            </form>
+          </div>
+          <div style={{ flex: 1, textAlign: 'center', borderLeft: '1px solid #dee2e6', paddingLeft: '2rem' }}>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
+              <li style={{ marginBottom: '1.5rem' }}>
+                <i className="fas fa-map-marker-alt fa-2x" style={{ color: '#0d6efd' }}></i>
+                <p>Dhaka, Bangladesh</p>
+              </li>
+              <li style={{ marginBottom: '1.5rem' }}>
+                <i className="fas fa-phone mt-4 fa-2x" style={{ color: '#0d6efd' }}></i>
+                <p>+880162****43</p>
+              </li>
+              <li>
+                <i className="fas fa-envelope mt-4 fa-2x" style={{ color: '#0d6efd' }}></i>
+                <p>pallabr8@gmail.com</p>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

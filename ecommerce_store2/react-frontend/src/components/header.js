@@ -111,8 +111,11 @@ const Header = () => {
         </li>
         {AuthButtons}
       </ul>
-      <form className="d-flex">
-      </form>
+      <ul className="navbar-nav">
+        <li className="nav-item">
+          <Link className="nav-link" to={'/contact'}>Contact</Link>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
