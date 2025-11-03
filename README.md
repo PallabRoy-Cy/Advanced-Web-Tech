@@ -1,6 +1,6 @@
 ### Live Demo
 
-Check the live deployed site on Netlify: [Live Site](pallabroy247electronics.netlify.app)
+Check the live deployed site on Netlify: [Live Site](https://pallabroy247electronics.netlify.app)
 
 ### Installation (Frontend)
 
