@@ -1,7 +1,7 @@
-# Node / React
-react-frontend/node_modules/
-react-frontend/build/
-react-frontend/dist/
+# Node React
+react-frontend/node_modules
+react-frontend/build
+react-frontend/dist
 react-frontend/.env
 react-frontend/.env.local
 react-frontend/.env.development.local

@@ -74,7 +74,10 @@ export default function Home() {
           <p className="hero-subtitle">Discover curated electronics at great prices. Fast shipping. Easy returns.</p>
           <div className="hero-actions">
             <button className="btn btn-primary hero-btn" onClick={() => navigate('/products')}>Shop Now</button>
-            <Link className="btn btn-outline-light hero-btn" to="/categories">View Categories</Link>
+            {/* <Link className="btn btn-outline-light hero-btn" to="/categories">View Categories</Link> */}
+            
+            <a className="btn btn-portfolio hero-btn" href="https://pallabroy.netlify.app/" target="_blank" rel="noopener noreferrer">Visit My Portfolio</a>
+
           </div>
         </div>
       </section>
