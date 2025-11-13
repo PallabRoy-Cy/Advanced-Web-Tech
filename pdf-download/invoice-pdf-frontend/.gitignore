@@ -1,0 +1,14 @@
+# Node / React
+node_modules/
+build/
+dist/
+
+# Laravel / PHP
+vendor/
+storage/
+bootstrap/cache/
+.env
+
+# System / IDE
+.DS_Store
+.vscode/

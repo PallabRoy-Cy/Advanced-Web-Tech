@@ -1,0 +1,26 @@
+<!-- invoice.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial; margin: 40px; }
+    h1 { text-align: center; }
+    .company, .customer { margin-bottom: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; }
+    th { background-color: #f4f4f4; }
+    .total { text-align: right; font-weight: bold; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Invoice</h1>
+  <div class="company">My Company Inc.<br />123 Business Street<br />Dhaka, Bangladesh</div>
+  <div class="customer">Bill To:<br />Customer Name<br />customer@email.com</div>
+  <table>
+    <tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th></tr>
+    <tr><td>Product A</td><td>2</td><td>500</td><td>1000</td></tr>
+    <tr><td>Product B</td><td>1</td><td>800</td><td>800</td></tr>
+  </table>
+  <div class="total">Grand Total: 1800</div>
+</body>
+</html>
